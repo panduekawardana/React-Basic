@@ -1,39 +1,18 @@
-import {useState} from 'react';
+import Navbar from './components/Navbar'
+import Header from './components/Header'
+import Section from './components/Section'
 
-function App() {
-   const [saldo, setSaldo] = useState(5000);
-
-   // Tarik Tunai
-   const tarikTunai = () => {
-      let inputDana = prompt('Masukkan dana');
-      const compare = Number(inputDana)
-      console.log(compare);
-
-      setSaldo(saldo - compare)
-   }
-   // Deposit
-   const deposit = () => {
-      const inputDana = prompt('Masukkan dana');
-      const compare = Number(inputDana)
-      setSaldo(saldo + compare)
-   }
-   return (
-      <div>
-         <h1>Saldo saat ini : {formatCurrency(saldo)}</h1>
-         <button onClick={() => tarikTunai()}>Tarik tunai</button>
-         <button onClick={() => deposit()} className='text-secondary font-inter'>Deposit</button>
-      </div>
-   )
+const App = () => {
+  return (
+      <>
+      {/* <h1 className='text-black text-4xl mt-52 font-inter'>Hello there my name is Panda</h1> */}
+         <Navbar className={'bg-black'}/>
+         <div className='pt-[5.7rem] lg:pt-[5.2]'>
+            <Header/>
+            <Section className='border border-white bg-orange-300'/>
+         </div>
+      </>
+  )
 }
 
-function formatCurrency(data) {
-   const dataNumricValue = Number(data)
-   const fmt= new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-   }).format(dataNumricValue);
-   return fmt
-}
-
-export default App;
+export default App
